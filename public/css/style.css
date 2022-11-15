@@ -5,7 +5,7 @@
 
     --primary: #ccc;
     --secondary: #aaa;
-    --tertiary: #777;
+    --tertiary: #3f8de7;
 
     --anim-delay: 250ms;
 }
@@ -13,6 +13,7 @@
 html,
 body {
     margin: 0;
+    height: 101%;
     width: 100%;
     background-color: black;
 }
@@ -62,6 +63,13 @@ section {
     flex-direction: column;
     align-items: center;
     text-align: left;
+    margin-top: 100px;
+}
+
+section>h2 {
+    color: white;
+    width: 200px;
+    text-align: center;
 }
 
 /* 
@@ -115,7 +123,7 @@ header {
     flex-direction: column;
     text-align: center;
     background-color: black;
-    min-height: 80vh;
+    min-height: 90vh;
 }
 
 header #matrix_bg {
@@ -123,14 +131,17 @@ header #matrix_bg {
     height: 100%;
     width: 100%;
     z-index: 0;
-    opacity: 50%;
+    opacity: 70%;
 }
 
 header #content {
     position: relative;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    height: 150px;
     width: 100%;
+    color: white;
 }
 
 header #header_span {
@@ -140,6 +151,20 @@ header #header_span {
     top: 25%;
     transform: translateX(-50%);
     text-align: left;
+}
+
+header cite {
+    opacity: 0;
+    transform: translateY(-50%);
+    position: absolute;
+    top: 90%;
+    text-align: left;
+    transition: all 1s ease-in-out;
+}
+
+header cite.active {
+    transform: translateY(0);
+    opacity: 100%;
 }
 
 header h2 {
@@ -221,12 +246,6 @@ header #header_switch img:hover {
     height: 1000px;
 }
 
-.projects>h2 {
-    color: white;
-    width: 200px;
-    text-align: center;
-}
-
 .projects #projects_select {
     display: flex;
     gap: 0;
@@ -264,11 +283,7 @@ header #header_switch img:hover {
 }
 
 .projects #projects_select button.active {
-    background-color: var(--off-white);
-}
-
-.projects #projects_select button.active span {
-    color: var(--off-black);
+    background-color: var(--tertiary);
 }
 
 .projects>ul {
@@ -339,7 +354,7 @@ header #header_switch img:hover {
 }
 
 .projects>ul>li #top div a:first-child:hover {
-    border: 1px solid #3f8de7;
+    border: 1px solid var(--tertiary);
 }
 
 .projects>ul>li #top div a:last-child {
@@ -380,6 +395,75 @@ header #header_switch img:hover {
 .projects ul>li ol {
     list-style-type: disc;
 }
+
+/* 
+    Contact section
+*/
+.contact {
+    position: relative;
+    width: 100%;
+}
+
+.contact svg {
+    position: absolute;
+    top: -100px;
+    width: 100%;
+    z-index: 0;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: 500px;
+    width: 100%;
+    padding: 10px;
+    z-index: 1;
+    margin-top: 100px;
+    background-color: var(--tertiary);
+}
+
+.contact form input, textarea {
+    padding: 15px;
+    width: 300px;
+
+    outline: none;
+    border-radius: 10px;
+}
+
+.contact form label {
+    color: var(--off-white);
+}
+
+.contact form textarea {
+    height: 300px;
+}
+
+.contact form button {
+    width: 200px;
+    padding: 10px;
+    background-color: transparent;
+    border: 2px solid var(--tertiary);
+    color: var(--off-white);
+    cursor: pointer;
+    transition: all 150ms;
+}
+
+.contact form button:hover {
+    background-color: var(--tertiary);
+}
+
+/*
+    Footer section
+*/
+footer>div {
+    height: 300px;
+    width: 100%;
+    margin-top: 100px;
+    background-color: var(--tertiary);
+}
+
 
 /* Animations */
 @keyframes fadeIn {

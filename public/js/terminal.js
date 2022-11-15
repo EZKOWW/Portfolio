@@ -1,7 +1,9 @@
 let navBar = document.querySelector("nav");
 let headerSwitch = document.getElementById("header_switch");
 let title = document.querySelector("h2");
+let citation = document.querySelector("cite");
 let sections = document.querySelectorAll("section");
+let footer = document.querySelector("footer");
 
 const tilde = '<span style="color: blue;">~</span>';
 const usr = '<span style="color: lightgreen;">eloik@rousseau</span>:' + tilde + '$';
@@ -70,10 +72,21 @@ headerAnim = async (obj) => {
 }
 
 // Shows html dom object after animations
-showElements = () => {
+showElements = async () => {
     navBar.classList.toggle("active");
-    headerSwitch.classList.toggle("active");
+    await sleep(250)
+    citation.classList.toggle("active");
+    await sleep(250)
     title.classList.toggle("active");
+    await sleep(250)
+    headerSwitch.classList.toggle("active");
+    await sleep(250)
+
+    sections.forEach(e => {
+        e.style.display = "flex";
+    })
+
+    footer.style.display = "flex";
 }
 
 cursorFlash = async (obj, infinite) => {
