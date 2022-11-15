@@ -7,16 +7,26 @@
     --secondary: #aaa;
     --tertiary: #777;
 
-    --anim-delay: 1s;
+    --anim-delay: 250ms;
 }
 
 html,
 body {
     margin: 0;
-    height: 100%;
     width: 100%;
     background-color: black;
 }
+
+/* Page scrolling animation */
+.hidden {
+    opacity: 0;
+    transition: all 1s ease;
+}
+
+.scroll-anim {
+    animation: scrollAnim 500ms forwards;
+}
+
 
 /* Fonts */
 @font-face {
@@ -40,7 +50,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 100px;
-    height: 100%;
     width: 100%;
 }
 
@@ -62,10 +71,11 @@ section {
 nav {
     display: flex;
     opacity: 0;
+    padding: 5px;
     align-items: center;
     justify-content: center;
     background-color: black;
-    transition: all var(--anim-delay) ease-in-out;
+    transition: all 1s ease-in-out;
     transform: translateY(-25%);
 }
 
@@ -85,7 +95,7 @@ nav ul a {
 
     -webkit-user-drag: none;
     user-select: none;
-    border-radius: 20px;
+    border-radius: 10px;
     border: 1px solid var(--primary);
     color: var(--off-white);
     text-decoration: none;
@@ -105,7 +115,7 @@ header {
     flex-direction: column;
     text-align: center;
     background-color: black;
-    height: 70%;
+    min-height: calc(80vh);
 }
 
 header #background {
@@ -121,21 +131,29 @@ header #background {
 }
 
 header #content {
+    position: relative;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    height: 70%;
-    width: 70%;
+    align-items: center;
+    width: 100%;
 }
 
-header #content h2 {
+header #header_span {
+    position: absolute;
+    width: 550px;
+    left: 50%;
+    top: 25%;
+    transform: translateX(-50%);
+    text-align: left;
+}
+
+header h2 {
     color: white;
     opacity: 0;
     transform: translateY(-50%);
-    transition: all var(--anim-delay) ease-in-out;
+    transition: all 1s ease-in-out;
 }
 
-header #content h2.active {
+header h2.active {
     transform: translateY(0);
     opacity: 100%;
 }
@@ -161,21 +179,25 @@ header .terminal img {
 }
 
 header #header_switch {
+    position: relative;
     flex-grow: 1;
     background-size: auto 150%;
-    background-image: linear-gradient(to bottom, #000 20%, #333);    
+    background-image: linear-gradient(to bottom, #000 20%, #333);
     background-position: 0px;
-    transition: all 500ms ease;
+    transition: opacity 1s ease, background-position var(--anim-delay) ease;
     opacity: 0;
     box-shadow: 0px 1px 0px var(--off-white);
 }
 
 header #header_switch img {
     position: absolute;
-    margin-bottom: 50px;
+    left: 50%;
+    bottom: 50px;
+    transform: translate(-50%, 0%);
     opacity: 50%;
     filter: invert(100%) sepia(0%) saturate(7496%) hue-rotate(71deg) brightness(97%) contrast(102%);
     transition: all var(--anim-delay) ease-in-out;
+    cursor: pointer;
 }
 
 header #header_switch.active {
@@ -186,21 +208,143 @@ header #header_switch:hover {
     background-position: bottom center;
 }
 
+header #header_switch:hover img {
+    transform: translate(-50%, 15%);
+    opacity: 75%;
+}
+
+header #header_switch img:hover {
+    transform: translate(-50%, 25%);
+    opacity: 100%;
+}
+
 /* 
     Projects section
 */
-.projects h2 {
-    color: white;
+.projects {
+    height: 1000px;
 }
 
-.projects ul {
+.projects>h2 {
+    color: white;
+    width: 200px;
+    text-align: center;
+}
+
+.projects>ul {
     display: flex;
+    height: 100%;
+    min-width: 75%;
     flex-direction: column;
+    align-items: center;
     gap: 20px;
-    width: 100%;
+    margin: 20px 0;
+    padding: 0;
+
     list-style-type: none;
-    border-radius: 20px;
+}
+
+.projects>ul>li {
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+    padding: 10px;
+
     border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.projects>ul>li #top {
+    height: 30%;
+    width: 100%;
+    text-align: center;
+}
+
+.projects>ul>li #top h2 {
+    display: block;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+
+    font-size: 20px;
+    color: var(--off-white);
+}
+
+.projects>ul>li #bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    height: 70%;
+    width: 100%;
+
+    color: var(--off-white);
+}
+
+.projects>ul>li #bottom #left {
+    width: 50%;
+    color: var(--off-white);
+}
+
+.projects>ul>li #bottom #right {
+    width: 50%;
+    text-align: top left;
+
+    color: var(--off-white);
+}
+
+.projects>ul>li #bottom p {
+    padding: 0;
+    margin: 0;
+}
+
+.projects ul>li ol {
+    list-style-type: disc;
+}
+
+
+.projects #projects_select {
+    display: flex;
+    gap: 0;
+    transform: skew(-10deg);
+    
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.projects #projects_select button {
+    width: 200px;
+    padding: 5px;
+
+    color: white;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all var(--anim-delay) ease;
+}
+
+.projects #projects_select button:first-child {
+    border-left: 1px solid var(--border);
+}
+
+.projects #projects_select button:last-child {
+    border-right: 1px solid var(--border);
+}
+
+.projects #projects_select button span {
+    display: block;
+    color: white;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 20px;
+    transform: skew(10deg);
+}
+
+.projects #projects_select button.active {
+    background-color: var(--off-white);
+}
+
+.projects #projects_select button.active span {
+    color: var(--off-black);
 }
 
 /* Animations */
@@ -211,6 +355,18 @@ header #header_switch:hover {
 
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes scrollAnim {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
 

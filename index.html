@@ -26,22 +26,93 @@
         <!-- Header terminal -->
         <div class="terminal">
             <div id="content">
-                <h2>Voyez ce qui fait de moi le talent que vous recherchez</h2>
                 <span id="header_span"></span>
             </div>
         </div>
         <div id="header_switch">
-            <img width="60px" src="icons/angle_down.svg" alt="">
+            <h2>Voyez ce qui fait de moi le talent que vous recherchez</h2>
+            <img onclick="document.querySelector('.projects').scrollIntoView({ block: 'end',  behavior: 'smooth' })"
+                width="60px" src="icons/angle_down.svg" alt="">
         </div>
     </header>
     <section class="projects">
         <h2>Mes projets</h2>
-        <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+        <div id="projects_select">
+            <button class="active" onclick="projectsSelect(this)"><span>Design Web</span></button>
+            <button onclick="projectsSelect(this)"><span>Jeux vidéos</span></button>
+            <button onclick="projectsSelect(this)"><span>Électronique et autres</span></button>
+        </div>
+        <ul id="web_design">
+            <li class="hidden">
+                <div id="top">
+                    <h2>Service d'analyse de fichiers 3D
+                        <hr size="1">
+                    </h2>
+                </div>
+                <div id="bottom">
+                    <div id="left">
+                        <p>Crewello est un API pouvant déterminer les dimensions, le poid, et
+                            le prix de différentes pièces 3D importées. Il peut également visualiser presque
+                            instantanément n'importe quel fichier dans un environnement 3D grâce à la librairie ThreeJS.
+                            Avec une quarantaine de fichiers supportés, ce logiciel est techniquement l'un des
+                            plus complet et compétitif sur le marché.</p>
+                    </div>
+                    <hr>
+                    <div id="right">
+                        <p>Compétences utilisées : </p>
+                        <ol>
+                            <li>Librairies ThreeJS et CuraWASM</li>
+                            <li>NodeJS</li>
+                            <li>Hégergement sur Heroku</li>
+                            <li>Configuration de nom de domaine</li>
+                        </ol>
+                    </div>
+                </div>
+            </li>
+            <li class="hidden">
+                <div id="top">
+                    <h2>Service de configuration d'écrans digitaux
+                        <hr size="1">
+                    </h2>
+                </div>
+                <div id="bottom">
+                    <div id="left">
+                        <p>Babi est un prototype fonctionnel d'entreprise d'écrans digitaux. Les restaurants, compagnies
+                            locales, et entrepreneurs pourront tous profiter de grand écrans afin de moderniser leur
+                            facade d'entreprise. Installez notre logiciel sur un Raspberry Pi,
+                            scannez le code QR affiché au redémarrage, et configurez votre écran sur notre Tableau de
+                            bord. Du menu du jour aux publicités, tout est affichable.</p>
+                    </div>
+                    <hr>
+                    <div id="right">
+                        <p>Compétences utilisées : </p>
+                        <ol>
+                            <li>Librairie ThreeJS et CuraWASM</li>
+                            <li>NodeJS</li>
+                            <li>Hégergement sur Heroku</li>
+                            <li>Configuration de nom de domaine</li>
+                        </ol>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <ul id="game_dev" style="display: none;">
+            <li class="hidden">
+
+            </li>
+            <li class="hidden"></li>
+            <li class="hidden"></li>
+            <li class="hidden"></li>
+            <li class="hidden"></li>
+        </ul>
+        <ul id="cs_more" style="display: none;">
+            <li class="hidden">
+
+            </li>
+            <li class="hidden"></li>
+            <li class="hidden"></li>
+            <li class="hidden"></li>
+            <li class="hidden"></li>
         </ul>
     </section>
 </body>

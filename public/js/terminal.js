@@ -29,7 +29,10 @@ headerAnim = async (obj) => {
         await sleep(10);
     }
     await cursorFlash(obj);
-    showElements();
+
+    setTimeout(() => {
+        showElements();
+    }, 150);
 
     // Second line
     for (let i = 0; i < baseBottom.length; i++) {
