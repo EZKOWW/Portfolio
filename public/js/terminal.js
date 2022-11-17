@@ -32,9 +32,7 @@ headerAnim = async (obj) => {
     }
     await cursorFlash(obj);
 
-    setTimeout(() => {
-        showElements();
-    }, 150);
+    showElements();
 
     // Second line
     for (let i = 0; i < baseBottom.length; i++) {
@@ -73,6 +71,7 @@ headerAnim = async (obj) => {
 
 // Shows html dom object after animations
 showElements = async () => {
+    await sleep(2000)
     navBar.classList.toggle("active");
     await sleep(250)
     citation.classList.toggle("active");
