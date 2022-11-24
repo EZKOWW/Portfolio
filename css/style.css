@@ -13,7 +13,6 @@
 html,
 body {
     margin: 0;
-    height: 101%;
     width: 100%;
     background-color: black;
 }
@@ -77,13 +76,14 @@ section>h2 {
     Navbar 
 */
 nav {
-    position: fixed;
+    position: absolute;
     display: flex;
     top: 0;
     opacity: 0;
     padding: 5px;
     z-index: 2;
     width: 100%;
+    box-sizing: border-box;
 
     align-items: center;
     justify-content: center;
@@ -243,12 +243,18 @@ header #header_switch img:hover {
     opacity: 100%;
 }
 
+/*
+    About me section
+*/
+.aboutme p {
+    color: var(--off-white);
+}
+
 /* 
     Projects section
 */
 .projects {
     position: relative;
-    height: 1000px;
 }
 
 .projects>img {
@@ -433,8 +439,8 @@ header #header_switch img:hover {
     height: 500px;
     width: 50%;
     z-index: 1;
-    margin-top: 100px;
-    padding-bottom: 100px;
+    margin-top: 30px;
+    padding-bottom: 50px;
 }
 
 .contact form input, textarea {
@@ -474,14 +480,14 @@ header #header_switch img:hover {
     background-color: var(--off-white);
 }
 
+.contact #icons {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 100px;
+}
 
-/*
-    Footer section
-*/
-footer {
-    height: 300px;
-    width: 100%;
-    background-color: var(--tertiary);
+.contact #icons img {
+    filter: invert(21%) sepia(99%) saturate(2127%) hue-rotate(202deg) brightness(98%) contrast(93%);
 }
 
 

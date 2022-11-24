@@ -84,8 +84,6 @@ showElements = async () => {
     sections.forEach(e => {
         e.style.display = "flex";
     })
-
-    footer.style.display = "flex";
 }
 
 cursorFlash = async (obj, infinite) => {
